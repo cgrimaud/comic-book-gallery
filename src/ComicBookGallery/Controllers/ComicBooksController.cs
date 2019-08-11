@@ -12,10 +12,17 @@ namespace ComicBookGallery.Controllers
         // add action method: every public method on a controller is an action method. responsible for
         // performing any actions that are requred to prepare a response for a request
         // action methods need to be public 
+        // action method typically returns one of the MVC action result types
 
-        public string Detail()
+        public ActionResult Detail()
         {
-            return "Hello from the comic books controller";
-        }
+            // content result is an action result type provided by MVC
+            if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return Redirect("/");
+            }
+            return Content("Hello from the comic books controller");
+          
+        } 
     }
 }
